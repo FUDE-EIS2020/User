@@ -2,7 +2,6 @@ kind: pipeline
 name: fude user
 
 steps:
-  - name: test
 #  - name: test
 #    image: openjdk:8-jdk-alpine
 #    volumes:
@@ -32,15 +31,15 @@ steps:
 #    when:
 #      branch:
 #        - master-*
-services:
-  - name: mongo
-    image: mongo:3.4
-    command: [ --smallfiles ]
-    ports:
-      - 27017
-  - name: redis
-    image: redis
-volumes:
-  - name: maven-cache
-    host:
-      path: /maven-cache
+#services:
+#  - name: mongo
+#    image: mongo:3.4
+#    command: [ --smallfiles ]
+#    ports:
+#      - 27017
+#  - name: redis
+#    image: redis
+#volumes:
+#  - name: maven-cache
+#    host:
+#      path: /maven-cache
