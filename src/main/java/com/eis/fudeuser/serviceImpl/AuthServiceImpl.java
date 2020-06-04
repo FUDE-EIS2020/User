@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
             if (this.checkPw(traderLoginRequest.getPassword(), trader.getToken())) {
                 // password true
                 Map<String, Object> claims = new HashMap<>();
-                claims.put("traderId", trader.getId());
+                claims.put("traderId", trader.getId().toString());
 
                 String jwt = jwtService.generateToken(claims, null, null);
 
@@ -64,7 +64,7 @@ public class AuthServiceImpl implements AuthService {
             if (this.checkPw(brokerLoginRequest.getPassword(), broker.getToken())) {
                 // password true
                 Map<String, Object> claims = new HashMap<>();
-                claims.put("brokerId", broker.getId());
+                claims.put("brokerId", broker.getId().toString());
 
                 String jwt = jwtService.generateToken(claims, null, null);
 

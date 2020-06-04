@@ -17,20 +17,18 @@ steps:
         - develop
         - fix-*
 
+  - name: docker
+    image: plugins/docker
+    settings:
+      username: chuyuxuan
+      password: chu000318
+      repo: chuyuxuan/fude-user
+      tags:
+        - v1.0.0
 
-#  - name: docker
-#    image: plugins/docker
-#    settings:
-#      username: tanxiao@1112955140136154
-#      password: 1234512345qwe
-#      repo: registry.cn-shanghai.aliyuncs.com/casecloud/user
-#      registry: registry.cn-shanghai.aliyuncs.com
-#      tags:
-#        - v2.2.7
-#
-#    when:
-#      branch:
-#        - master-*
+    when:
+      branch:
+        - master-*
 #services:
 #  - name: mongo
 #    image: mongo:3.4
