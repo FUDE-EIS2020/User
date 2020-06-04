@@ -4,6 +4,7 @@ package com.eis.fudeuser.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -25,9 +26,9 @@ public class Broker {
     @Column(nullable = false)
     private String token;
 
-//  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, targetEntity=FuturesProduct.class, mappedBy = "broker")
-//  @JoinTable
-//  private ArrayList<FuturesProduct> products;
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, targetEntity = FuturesProduct.class)
+    @JoinTable
+    private List<FuturesProduct> products;
 
     public UUID getId() {
         return id;
@@ -53,11 +54,11 @@ public class Broker {
         this.token = token;
     }
 
-//  public ArrayList<FuturesProduct> getProducts() {
-//    return products;
-//  }
-//
-//  public void setProducts(ArrayList<FuturesProduct> products) {
-//    this.products = products;
-//  }
+    public List<FuturesProduct> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<FuturesProduct> products) {
+        this.products = products;
+    }
 }
