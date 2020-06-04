@@ -44,9 +44,8 @@ services:
     image: mysql
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_DATABASE: test
-    commands:
-      - mysql -u root --execute="CREATE DATABASE fude;"
+      MYSQL_DATABASE: fude
+
 volumes:
   - name: maven-cache
     host:
