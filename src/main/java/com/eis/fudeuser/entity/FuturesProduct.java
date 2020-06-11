@@ -1,9 +1,9 @@
 package com.eis.fudeuser.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table
@@ -13,19 +13,13 @@ public class FuturesProduct {
     @Column(nullable = false)
     String period;
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "id", updatable = false, nullable = false)
-    private UUID id;
+    private Long id;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -11,6 +11,7 @@ import com.eis.fudeuser.entity.Trader;
 import com.eis.fudeuser.repository.BrokerRepository;
 import com.eis.fudeuser.repository.TraderRepository;
 import com.eis.fudeuser.service.AuthService;
+import com.eis.fudeuser.service.IDService;
 import com.eis.fudeuser.service.JWTService;
 import com.eis.fudeuser.utils.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private JWTService jwtService;
+
+    @Autowired
+    private IDService idService;
 
     @Autowired
     private TraderRepository traderRepository;
@@ -83,6 +87,7 @@ public class AuthServiceImpl implements AuthService {
             return new GeneralMessage(400, "username exists");
         } else {
             Trader trader = new Trader();
+            trader.setId(idService.generate("trader"));
             trader.setCompName(traderRegisterRequest.getCompName());
             trader.setName(traderRegisterRequest.getName());
             trader.setToken(BCrypt.hashpw(traderRegisterRequest.getPassword()));
@@ -98,6 +103,7 @@ public class AuthServiceImpl implements AuthService {
             return new GeneralMessage(400, "username exists");
         } else {
             Broker broker = new Broker();
+            broker.setId(idService.generate("broker"));
             broker.setName(brokerRegisterRequest.getName());
             broker.setToken(BCrypt.hashpw(brokerRegisterRequest.getPassword()));
             brokerRepository.save(broker);

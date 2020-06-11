@@ -1,24 +1,13 @@
 package com.eis.fudeuser.entity;
 
-
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
-
 
 @Entity
 @Table
 public class Broker {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "id", updatable = false, nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -26,15 +15,16 @@ public class Broker {
     @Column(nullable = false)
     private String token;
 
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, targetEntity = FuturesProduct.class)
-    @JoinTable
+    @OneToMany(cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY,
+            targetEntity = FuturesProduct.class)
     private List<FuturesProduct> products;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

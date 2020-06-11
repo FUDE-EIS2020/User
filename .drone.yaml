@@ -9,7 +9,7 @@ steps:
         path: /root/.m2
     commands:
       - sleep 15
-      - chmod +x ./mvnw && ./mvnw test -Dspring.profiles.active=droneCI && ./mvnw clean package -Dspring.profiles.active=droneCI
+      - chmod +x ./mvnw && ./mvnw clean package -Dspring.profiles.active=droneCI
     when:
       branch:
         - master
@@ -24,8 +24,7 @@ steps:
       password: chu000318
       repo: chuyuxuan/fude-user
       tags:
-        - v1.0.0
-
+        - 2.0.1
     when:
       branch:
         - master-*
@@ -43,6 +42,8 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_DATABASE: fude
+  - name: redis
+    image: redis
 
 volumes:
   - name: maven-cache
